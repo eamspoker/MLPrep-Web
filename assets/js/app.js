@@ -1,4 +1,3 @@
-var constraints = { video: { facingMode: "environment" }, audio: false };
 const cameraView = document.querySelector("#camera--view"),
       cameraOutput = document.querySelector("#camera--output"),
       cameraSensor = document.querySelector("#camera--sensor"),
@@ -22,12 +21,10 @@ function cameraStart() {
   }
 
   // Hide the button once clicked.
-  event.target.classList.add('removed');
+  event.target.innerText = "Turn off Camera"
 
   // getUsermedia parameters to force video but not audio.
-  const constraints = {
-    video: true
-  };
+  var constraints = { video: { facingMode: "environment" }, audio: false };
 
   // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
