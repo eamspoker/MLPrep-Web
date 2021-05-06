@@ -41,6 +41,7 @@ function predictWebcam() {
 
 var model = true;
 
+
 function getUserMediaSupported() {
     return !!(navigator.mediaDevices &&
       navigator.mediaDevices.getUserMedia);
