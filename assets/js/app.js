@@ -17,7 +17,7 @@ function cameraStart() {
   }
 
   if(isOn){
-    CameraView.srcObject = "";
+    cameraView.srcObject = "";
     event.target.innerText = "Turn on Camera";
     isOn = false;
 
