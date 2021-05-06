@@ -18,12 +18,13 @@ function cameraStart() {
 
   if(isOn){
     CameraView.srcObject = "";
-    event.target.innerText = "Turn on Camera"
+    event.target.innerText = "Turn on Camera";
+    isOn = false;
 
   } else{
 
   // Hide the button once clicked.
-  event.target.innerText = "Turn off Camera"
+  event.target.innerText = "Turn off Camera";
   isOn = true;
 
   // getUsermedia parameters to force video but not audio.
