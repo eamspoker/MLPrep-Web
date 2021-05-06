@@ -5,9 +5,12 @@ const cameraView = document.querySelector("#camera--view"),
       camera = document.getElementById("camera"),
       loading = document.getElementById("loading"),
       liveView = document.getElementById("liveView"),
+      results = document.getElementById("results"),
+      label = document.getElementById("label"),
       content = document.getElementById("content");
 var isOn = false;
 var localstream;
+var labels = [];
 
 if (getUserMediaSupported()) {
   cameraTrigger.addEventListener('click', cameraStart);
@@ -25,14 +28,17 @@ function cameraStart() {
     cameraView.pause();
     cameraView.src = "";
     localstream.getTracks()[0].stop();
-    event.target.innerText = "Turn on Camera";
+    event.target.innerText = "Try Again";
     isOn = false;
     camera.style.display = "none";
+    results.style.display = "inline";
+    label.innerText = labels[0];
 
   } else{
 
+  results.style.display = "none";
   camera.style.display = "inline";
-  event.target.innerText = "Turn off Camera";
+  event.target.innerText = "Find Recipes";
   isOn = true;
 
   // getUsermedia parameters to force video but not audio.
@@ -49,6 +55,8 @@ function cameraStart() {
 
 var children = [];
 
+
+
 function predictWebcam() {
   // Now let's start classifying a frame in the stream.
 model.detect(cameraView).then(function (predictions) {
@@ -57,6 +65,7 @@ model.detect(cameraView).then(function (predictions) {
     liveView.removeChild(children[i]);
   }
   children.splice(0);
+  labels = [];
 
   // Now lets loop through predictions and draw them to the live view if
   // they have a high confidence score.
@@ -77,12 +86,11 @@ model.detect(cameraView).then(function (predictions) {
           + predictions[n].bbox[2] + 'px; height: '
           + predictions[n].bbox[3] + 'px;';
 
-      console.log(highlighter.innerText);
-
       liveView.appendChild(highlighter);
       liveView.appendChild(p);
       children.push(highlighter);
       children.push(p);
+      labels.push(predictions[n].class);
     }
   }
 
