@@ -77,10 +77,10 @@ function predictWebcam() {
             + predictions[n].bbox[2] + 'px; height: '
             + predictions[n].bbox[3] + 'px;';
 
-        // camera.appendChild(highlighter);
-        // camera.appendChild(p);
-        // children.push(highlighter);
-        // children.push(p);
+        camera.appendChild(highlighter);
+        camera.appendChild(p);
+        children.push(highlighter);
+        children.push(p);
       }
     }
 
