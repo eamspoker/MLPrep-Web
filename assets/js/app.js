@@ -2,7 +2,9 @@ const cameraView = document.querySelector("#camera--view"),
       cameraOutput = document.querySelector("#camera--output"),
       cameraSensor = document.querySelector("#camera--sensor"),
       cameraTrigger = document.querySelector("#camera--trigger"),
-      camera = document.getElementById("camera");
+      camera = document.getElementById("camera"),
+      camera = document.getElementById("loading"),
+      content = document.getElementById("content");
 var isOn = false;
 var localstream;
 
@@ -45,9 +47,19 @@ function cameraStart() {
 }
 
 function predictWebcam() {
+
+
 }
 
-var model = true;
+var model = undefined;
+
+cocoSsd.load().then(function (loadedModel) {
+model = loadedModel;
+// Show demo section now model is ready to use.
+content.classList.remove('invisible');
+loading.style.display = "none";
+
+});
 
 
 function getUserMediaSupported() {
