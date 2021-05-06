@@ -51,10 +51,10 @@ var children = [];
 function predictWebcam() {
   // Now let's start classifying a frame in the stream.
   model.detect(cameraView).then(function (predictions) {
-    // Remove any highlighting we did previous frame.
-    // for (let i = 0; i < children.length; i++) {
-    //   camera.removeChild(children[i]);
-    // }
+    //Remove any highlighting we did previous frame.
+    for (let i = 0; i < children.length; i++) {
+      camera.removeChild(children[i]);
+    }
     children.splice(0);
 
     // Now lets loop through predictions and draw them to the live view if
