@@ -3,6 +3,7 @@ const cameraView = document.querySelector("#camera--view"),
       cameraSensor = document.querySelector("#camera--sensor"),
       cameraTrigger = document.querySelector("#camera--trigger")
 var isOn = false;
+var localstream;
 
 if (getUserMediaSupported()) {
   cameraTrigger.addEventListener('click', cameraStart);
@@ -19,6 +20,7 @@ function cameraStart() {
   if(isOn){
     cameraView.pause();
     cameraView.src = "";
+    localstream.getTracks()[0].stop();
     event.target.innerText = "Turn on Camera";
     isOn = false;
 
@@ -34,6 +36,7 @@ function cameraStart() {
   // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     cameraView.srcObject = stream;
+    localstream = stream;
     cameraView.addEventListener('loadeddata', predictWebcam);
   });
 }
