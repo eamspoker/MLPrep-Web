@@ -3,7 +3,7 @@ const cameraView = document.querySelector("#camera--view"),
       cameraSensor = document.querySelector("#camera--sensor"),
       cameraTrigger = document.querySelector("#camera--trigger"),
       camera = document.getElementById("camera"),
-      camera = document.getElementById("loading"),
+      loading = document.getElementById("loading"),
       content = document.getElementById("content");
 var isOn = false;
 var localstream;
@@ -57,7 +57,7 @@ cocoSsd.load().then(function (loadedModel) {
 model = loadedModel;
 // Show demo section now model is ready to use.
 content.classList.remove('invisible');
-
+loading.style.display = "none";
 
 });
 
