@@ -1,7 +1,8 @@
 const cameraView = document.querySelector("#camera--view"),
       cameraOutput = document.querySelector("#camera--output"),
       cameraSensor = document.querySelector("#camera--sensor"),
-      cameraTrigger = document.querySelector("#camera--trigger")
+      cameraTrigger = document.querySelector("#camera--trigger"),
+      camera = document.getElementById("camera");
 var isOn = false;
 var localstream;
 
@@ -23,10 +24,11 @@ function cameraStart() {
     localstream.getTracks()[0].stop();
     event.target.innerText = "Turn on Camera";
     isOn = false;
+    camera.style.display = "none";
 
   } else{
 
-  // Hide the button once clicked.
+  camera.style.display = "inline";
   event.target.innerText = "Turn off Camera";
   isOn = true;
 
