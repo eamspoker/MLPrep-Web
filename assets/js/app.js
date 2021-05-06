@@ -17,11 +17,14 @@ function cameraStart() {
   }
 
   if(isOn){
-    return;
-  }
+    CameraView.srcObject = "";
+    event.target.innerText = "Turn on Camera"
+
+  } else{
 
   // Hide the button once clicked.
   event.target.innerText = "Turn off Camera"
+  isOn = true;
 
   // getUsermedia parameters to force video but not audio.
   var constraints = { video: { facingMode: "environment" }, audio: false };
@@ -31,6 +34,7 @@ function cameraStart() {
     cameraView.srcObject = stream;
     cameraView.addEventListener('loadeddata', predictWebcam);
   });
+}
 }
 
 function predictWebcam() {
