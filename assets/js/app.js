@@ -33,6 +33,11 @@ function cameraStart() {
     isOn = false;
     camera.style.display = "none";
     results.style.display = "inline";
+    var inner = "";
+    for(var i = 0; i < labels.length; i++){
+      inner += labels[i] + ", ";
+    }
+    inner = inner.substring(0, inner.length -1);
     label.innerText = labels[0];
     var xhttp = new XMLHttpRequest();
     var url = "http://127.0.0.1:5000/";
