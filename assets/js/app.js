@@ -38,7 +38,7 @@ function cameraStart() {
       inner += labels[i] + ", ";
     }
     inner = inner.substring(0, inner.length -1);
-    label.innerText = labels[0];
+    label.innerText = inner;
     var xhttp = new XMLHttpRequest();
     var url = "http://127.0.0.1:5000/";
     for(var i = 0; i < labels.length; i++){
