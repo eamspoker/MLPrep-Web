@@ -25,7 +25,6 @@ function cameraStart() {
   }
 
   if(isOn){
-    console.log(labels);
     cameraView.pause();
     cameraView.src = "";
     localstream.getTracks()[0].stop();
@@ -54,7 +53,7 @@ function cameraStart() {
     headers: {"Access-Control-Allow-Origin": "*"},
     url: url,
     crossDomain: true,
-    dataType: 'jsonp'
+    dataType: 'json'
   }).done(function (data) {
       console.log(data);
   });
@@ -131,7 +130,6 @@ model = loadedModel;
 // Show demo section now model is ready to use.
 content.classList.remove('invisible');
 loading.style.display = "none";
-console.log("loaded!");
 
 });
 
