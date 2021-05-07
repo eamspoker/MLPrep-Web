@@ -7,6 +7,7 @@ const cameraView = document.querySelector("#camera--view"),
       liveView = document.getElementById("liveView"),
       results = document.getElementById("results"),
       label = document.getElementById("label"),
+      recipes = document.getElementById("recipes"),
       content = document.getElementById("content");
 var isOn = false;
 var localstream;
@@ -25,6 +26,7 @@ function cameraStart() {
   }
 
   if(isOn){
+    recipes.style.display = "inline";
     cameraView.pause();
     cameraView.src = "";
     localstream.getTracks()[0].stop();
@@ -60,6 +62,7 @@ function cameraStart() {
 
   } else{
 
+  recipes.style.display = "none";
   results.style.display = "none";
   camera.style.display = "inline";
   event.target.innerText = "Find Recipes";
@@ -138,3 +141,8 @@ function getUserMediaSupported() {
     return !!(navigator.mediaDevices &&
       navigator.mediaDevices.getUserMedia);
   }
+
+
+function populateList(recipes){
+
+}
