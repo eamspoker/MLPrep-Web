@@ -48,6 +48,7 @@ function cameraStart() {
     // xhttp.open("GET", url, false);
     // xhttp.send();
     // console.log(xhttp.responseText);
+    console.log(url);
     $.ajax({
     type: "GET",
     headers: {"Access-Control-Allow-Origin": "*"},
