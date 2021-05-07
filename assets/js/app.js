@@ -50,7 +50,7 @@ function cameraStart() {
     // console.log(xhttp.responseText);
     $.ajax({
     type: "GET",
-    // headers: {"X-My-Custom-Header": "some value"},
+    headers: {"Access-Control-Allow-Origin": "*"},
     url: url,
     crossDomain: true,
     dataType: 'jsonp'
