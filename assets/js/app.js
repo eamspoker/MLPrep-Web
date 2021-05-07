@@ -10,7 +10,7 @@ const cameraView = document.querySelector("#camera--view"),
       content = document.getElementById("content");
 var isOn = false;
 var localstream;
-var labels = [];
+var labels = ["eggs"];
 
 if (getUserMediaSupported()) {
   cameraTrigger.addEventListener('click', cameraStart);
@@ -25,6 +25,7 @@ function cameraStart() {
   }
 
   if(isOn){
+    console.log(labels);
     cameraView.pause();
     cameraView.src = "";
     localstream.getTracks()[0].stop();
@@ -33,6 +34,15 @@ function cameraStart() {
     camera.style.display = "none";
     results.style.display = "inline";
     label.innerText = labels[0];
+    var xhttp = new XMLHttpRequest();
+    var url = "http://127.0.0.1:5000/";
+    for(var i = 0; i < labels.length; i++){
+      url += labels[i] + ",";
+    }
+    url = url.substring(0, url.length -1);
+    xhttp.open("GET", url, false);
+    xhttp.send();
+    console.log(xhttp.responseText);
 
   } else{
 
@@ -65,7 +75,7 @@ model.detect(cameraView).then(function (predictions) {
     liveView.removeChild(children[i]);
   }
   children.splice(0);
-  labels = [];
+  //labels = [];
 
   // Now lets loop through predictions and draw them to the live view if
   // they have a high confidence score.
