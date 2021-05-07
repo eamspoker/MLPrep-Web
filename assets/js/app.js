@@ -10,7 +10,7 @@ const cameraView = document.querySelector("#camera--view"),
       content = document.getElementById("content");
 var isOn = false;
 var localstream;
-var labels = ["eggs"];
+var labels = [];
 
 if (getUserMediaSupported()) {
   cameraTrigger.addEventListener('click', cameraStart);
@@ -40,9 +40,18 @@ function cameraStart() {
       url += labels[i] + ",";
     }
     url = url.substring(0, url.length -1);
-    xhttp.open("GET", url, false);
-    xhttp.send();
-    console.log(xhttp.responseText);
+    // xhttp.open("GET", url, false);
+    // xhttp.send();
+    // console.log(xhttp.responseText);
+    $.ajax({
+    type: "GET",
+    // headers: {"X-My-Custom-Header": "some value"},
+    url: url,
+    crossDomain: true,
+    dataType: 'jsonp'
+  }).done(function (data) {
+      console.log(data);
+  });
 
   } else{
 
