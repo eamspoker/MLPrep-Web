@@ -89,7 +89,7 @@ model.detect(cameraView).then(function (predictions) {
     liveView.removeChild(children[i]);
   }
   children.splice(0);
-  //labels = [];
+  labels = [];
 
   // Now lets loop through predictions and draw them to the live view if
   // they have a high confidence score.
