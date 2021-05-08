@@ -13,6 +13,7 @@ var isOn = false;
 var localstream;
 var labels = [];
 
+
 if (getUserMediaSupported()) {
   cameraTrigger.addEventListener('click', cameraStart);
 } else {
