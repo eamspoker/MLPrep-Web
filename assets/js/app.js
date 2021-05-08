@@ -49,7 +49,6 @@ function cameraStart() {
     // xhttp.open("GET", url, false);
     // xhttp.send();
     // console.log(xhttp.responseText);
-    console.log(url);
     $.ajax({
     type: "GET",
     headers: {"Access-Control-Allow-Origin": "*"},
@@ -57,7 +56,9 @@ function cameraStart() {
     crossDomain: true,
     dataType: 'json'
   }).done(function (data) {
-      console.log(data);
+    if(Object.values(data).length != 0){
+    console.log(populateList(Object.values(data)[0]));
+    }
   });
 
   } else{
@@ -143,6 +144,56 @@ function getUserMediaSupported() {
   }
 
 
-function populateList(recipes){
+function populateList(recipesList){
+  var name = document.createElement("th");
+  name.innerHTML = "Name";
 
+  var cuisine_label = document.createElement("th");
+  cuisine_label.innerHTML = "Cuisine";
+
+  var ingredients_label = document.createElement("th");
+  ingredients_label.innerHTML = "Ingredients Used";
+
+  var link = document.createElement("th");
+  link.innerHTML = "Link";
+
+  var first_row = document.createElement('tr');
+  first_row.appendChild(name);
+  first_row.appendChild(cuisine_label);
+  first_row.appendChild(ingredients_label);
+  first_row.appendChild(link);
+
+  recipes.appendChild(first_row);
+
+
+   for(var i = 0; i < recipesList.length; i++){
+     var items = JSON.parse(recipesList[i]);
+     var row = document.createElement('tr');
+
+     var name_label = document.createElement("td");
+     name_label.innerHTML = items.name;
+     row.appendChild(name_label);
+
+     var cuisine = document.createElement("td");
+     cuisine.innerHTML = items.cuisine;
+     row.appendChild(cuisine);
+
+     var ingredients = document.createElement("td");
+     ingredients.innerHTML = items.ingredients;
+     row.appendChild(ingredients);
+
+     var img_url = document.createElement("td");
+     var url = document.createElement("a");
+     url.href = items.url;
+     var image = document.createElement("img");
+     image.src = items.img;
+     image.classList.add("thumbnail");
+
+     url.appendChild(image);
+     img_url.appendChild(url);
+     row.appendChild(img_url);
+
+     recipes.appendChild(row);
+
+   }
 }

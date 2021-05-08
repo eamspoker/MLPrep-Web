@@ -49,11 +49,14 @@
 }
 
 .hide{
-  margin-left: 70px !important;
   margin-top: 60px !important;
   display: none;
 }
 
 th, td {
   padding: 10px !important;
+}
+
+.thumbnail{
+  width:30% !important;
 }
