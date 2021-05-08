@@ -41,7 +41,7 @@ function cameraStart() {
     inner = inner.substring(0, inner.length -1);
     label.innerText = inner;
     var xhttp = new XMLHttpRequest();
-    var url = "http://0.0.0.0:5000/";
+    var url = "http://127.0.0.1:5000/";
     for(var i = 0; i < labels.length; i++){
       url += labels[i] + ",";
     }
