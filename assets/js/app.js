@@ -145,55 +145,66 @@ function getUserMediaSupported() {
 
 
 function populateList(recipesList){
-  var name = document.createElement("th");
-  name.innerHTML = "Name";
-
-  var cuisine_label = document.createElement("th");
-  cuisine_label.innerHTML = "Cuisine";
-
-  var ingredients_label = document.createElement("th");
-  ingredients_label.innerHTML = "Ingredients Used";
-
-  var link = document.createElement("th");
-  link.innerHTML = "Link";
-
-  var first_row = document.createElement('tr');
-  first_row.appendChild(name);
-  first_row.appendChild(cuisine_label);
-  first_row.appendChild(ingredients_label);
-  first_row.appendChild(link);
-
-  recipes.appendChild(first_row);
+  var outer = document.createElement("ul");
 
 
    for(var i = 0; i < recipesList.length; i++){
+     var inner = document.createElement("li");
      var items = JSON.parse(recipesList[i]);
-     var row = document.createElement('tr');
 
-     var name_label = document.createElement("td");
+     var name = document.createElement("li");
+     name.innerHTML = "Recipe #" + i;
+     var unordered1 = document.createElement("ul");
+
+     var name_label = document.createElement("li");
      name_label.innerHTML = items.name;
-     row.appendChild(name_label);
 
-     var cuisine = document.createElement("td");
+     var cuisine_label = document.createElement("li");
+     cuisine_label.innerHTML = "Cuisine";
+     var unordered2 = document.createElement("ul");
+
+     var cuisine = document.createElement("li");
      cuisine.innerHTML = items.cuisine;
-     row.appendChild(cuisine);
 
-     var ingredients = document.createElement("td");
+     var ingredients_label = document.createElement("li");
+     ingredients_label.innerHTML = "Ingredients Included";
+     var unordered3 = document.createElement("ul");
+
+     var ingredients = document.createElement("li");
      ingredients.innerHTML = items.ingredients;
-     row.appendChild(ingredients);
 
-     var img_url = document.createElement("td");
+     var img_url = document.createElement("li");
      var url = document.createElement("a");
      url.href = items.url;
      var image = document.createElement("img");
      image.src = items.img;
      image.classList.add("thumbnail");
 
+     var link = document.createElement("li");
+     link.innerHTML = "Link";
+     var unordered4 = document.createElement("ul");
+
+     unordered1.appendChild(name_label);
+     name.appendChild(unordered1);
+
+     unordered2.appendChild(cuisine);
+     cuisine_label.appendChild(unordered2);
+
+     unordered3.appendChild(ingredients);
+     ingredients_label.appendChild(unordered2);
+
      url.appendChild(image);
      img_url.appendChild(url);
-     row.appendChild(img_url);
+     unordered4.appendChild(img_url);
+     link.appendChild(unordered4);
 
-     recipes.appendChild(row);
+     outer.appendChild(name);
+     outer.appendChild(cuisine_label);
+     outer.appendChild(ingredients_label);
+     outer.appendChild(link);
+
+
+     recipes.appendChild(outer);
 
    }
 }
