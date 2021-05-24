@@ -66,6 +66,7 @@ function cameraStart() {
   } else{
 
   recipes.style.display = "none";
+  recipes.innerHTML ="";
   results.style.display = "none";
   camera.style.display = "inline";
   event.target.innerText = "Find Recipes";
