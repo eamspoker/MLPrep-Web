@@ -1,4 +1,4 @@
-# MLPrep-Frontend
+# MLPrep-Web
 
 ## Original
 
