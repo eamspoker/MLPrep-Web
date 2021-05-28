@@ -25,7 +25,7 @@ This is a web-based implementation of [MLPrep](https://github.com/MLH-Fellowship
 ## Issues
 
 
-[![Open Issues](https://img.shields.io/github/issues-raw/eamspoker/MLPrep-Web?style=flat-square)](https://github.com/eamspoker/MLPrep-Web/issues)
+[![Open Issues](https://img.shields.io/github/issues/eamspoker/MLPrep-Web?style=for-the-badge)](https://github.com/eamspoker/MLPrep-Web/issues)
 
 
 
